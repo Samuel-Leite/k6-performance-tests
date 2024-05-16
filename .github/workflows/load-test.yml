@@ -15,10 +15,7 @@ jobs:
         with: 
           filename: modulo5/4.aws-gitactions.js
 
-      - run: |
-          ls
-          mkdir report
-          mv index.html report
+      - run: ls & mkdir report & mv modulo5/index.html report
       
       - name: step 3 - upload artifact
         uses: actions/upload-artifact@v4
