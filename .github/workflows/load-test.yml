@@ -15,27 +15,24 @@ jobs:
         with: 
           filename: modulo5/4.aws-gitactions.js
 
-      - run: ls & mkdir report & mv index.html report
-
-      - name: step 2.5 - check if index.html exists
+      - name: step 3 - check for index.html and move to report
         run: |
-          if [ -f index.html ]; then
-            echo "index.html encontrado"
-          else
-            echo "index.html não encontrado"
-          fi
-
-      - name: step 3 - list files and move index.html to report
-        run: |
-          ls
+          echo "Listando arquivos no diretório atual:"
+          ls -al
           mkdir -p report
           if [ -f index.html ]; then
-            mv index.html report
+            echo "index.html encontrado. Movendo para o diretório report."
+            mv index.html report/
           else
-            echo "index.html não encontrado, pular movimento"
+            echo "index.html não encontrado."
           fi
 
-      - name: step 4 - upload artifact
+      - name: step 4 - verify report directory
+        run: |
+          echo "Listando arquivos no diretório report:"
+          ls -al report
+
+      - name: step 5 - upload artifact
         uses: actions/upload-artifact@v4
         with: 
           name: relatorio de testes de performance
