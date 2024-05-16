@@ -5,7 +5,7 @@ import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporte
 
 export const options = {
     vus: 10,
-    duration: '3s',
+    duration: '5s',
     thresholds: {
         http_req_failed: ['rate < 0.05'],
     }
